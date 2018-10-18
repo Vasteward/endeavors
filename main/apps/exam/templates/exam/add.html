@@ -1,0 +1,235 @@
+{% load static from staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Add an Endeavor</title>
+
+    <!-- linking a css style sheet -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/dash.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/article.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/map.css' %}">
+
+    <!-- javascript -->
+    <script type="text/javascript" src="{% static 'js/app.js' %}"></script>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Arizonia" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Oswald:200,400" rel="stylesheet">
+
+    <!-- jquery -->
+    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- google apis-->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyB4E6zmXWWSZMGWtPlNaDYZDcugkUhG8rE"></script>
+
+    <script>
+    var map;
+    // the initialize function creates the map
+    function initialize(){
+        var center = new google.maps.LatLng(39.7392, -104.9903);
+        map = new google.maps.Map(document.getElementById('map'), {
+            center: center,
+            //the lower the number the further the map will be zoomed out
+            zoom: 13
+        });
+    }
+    // occurs when page loads
+    google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+    <style>
+        #map{
+            width: 100%;
+        }
+    </style>
+</head>
+<body id="article-page">
+    <header>
+        <div class="date-time">
+            <h4> Date: {{date}}</h4>
+            <h4 id="tips-article"><img id="icon" src="../../static/images/tips.png" alt="Tips Icon">
+            </h4>
+            <h4>Time: {{time}}</h4>
+        </div>
+    </header>
+    <!-- ADVICE-->
+
+    <div  class="tips">
+        <div id="advice-container">
+            <div id="pre">
+                <h1 class="title-small" id="tips-title">4 Tips for Setting Powerful Goals </h1>
+                <h5>by
+                    <a href="https://www.success.com/rohn-4-tips-for-setting-powerful-goals/"> Jim Rohn </a>
+                    (a writer for 
+                        <strong id="success-mag">SUCCESS </strong>
+                        <small>magazine</small>
+                    )
+                </h5>
+                <h5>elucidated by Vinci Allen-Steward </h5>
+                <p id="choices" class="speak">Write the vision and make it plain</p>
+                <img class="inspire" src="https://source.unsplash.com/1600x900/?inspiration,quote" alt="Inspirational Photo">
+            </div>
+            <div id="order-list">
+                <ol type="i">
+                    <li id="content-one" class="sub">Evaluate and reflect</li>
+                    <div id="content-one-a" class="tips-text">
+                        <p>
+                            Rohn's take on how to truly decide what we want in the future is key, as he mentions that we must know where we are presently and deeply ascertain if we are satisfied with our current state of affairs. So, ask yourself, "...Am I content?"
+                        </p>
+                        <br>
+                        <br>
+                        <br>
+                        <div>
+                            <p>
+                                <em>
+                                    "In order to know where you're going, you must know where you've been."--James Baldwin
+                                </em>
+                                <img class="left-img" src="../../static/images/baldwin.jpg" alt="James Baldwin">
+                            </p>
+                        </div>
+                        <br>
+                        <br>
+                        <br>
+                        <div>
+                            <p>
+                                    <img class="right-img" src="../../static/images/einstein.jpg" alt="Albert Einstein">
+                                <em>
+                                    "Insanity is doing the same thing over and over again and expecting a different result."--Albert Einstein
+                                </em>
+
+                            </p>
+                        </div>
+                        <br>
+                        <br>
+                        <br>
+                        <p>
+                            These action verbs play artfully together just as the aforementioned quotes. How could one fathom to correct a course of action if they do not know where they erred in the first place. By reflecting on our past we give our future endeavors a chance to thrive and triumph.
+                        </p>
+                        <p>So take a moment to reflect on the goals you set and </p>
+                    </div>
+                    <li id="content-two" class="sub">Define your dreams and goals</li>
+                    <div id="content-two-a" class="tips-text">            
+                        <p>My mother once told me, "Dreams are goals with deadlines". No matter how eccentric or idiosyncratic your dreams may be, they are feasible. In the same way that people do not eat an elephant whole, we do not accomplish one gargantuan endeavor at one time. We break the best up into pieces. Sure, we have heard this alegorical story before as Mike Martel, author of 
+                            <em>
+                                <a href="http://achievethegreenberetway.com/dont-eat-the-elephant-one-bite-at-a-time/">Don't Eat the Elephant One Bite at a Time(2015)
+                                </a>
+                            </em>, has astutely pointed out. I, for one, must agree with him. Over time, trying to tackle this monstrosity of a task get old, it start to smell. It feels as if the task you laid out is unmoving and just seems like it is more trouble than it is worth. Thus, thoughts of dropping the task all together echoes tauntingly in the ears. 
+                        </p>
+                        <p><strong>Don't fret</strong></p>
+                        <img class="left-img" src="../../static/images/solution.jpg" alt="Solution Ahead">
+                        <p>Martell states that instead of an elephant dinner for one, it would be best to have a feast or a Zydeco party for many. In other words, invite others that share your values, understand your mission, and are invested in seeing your endeavor become a reality.
+                        </p>
+                        <p>Ensure that you lay out the different tasks that needs to be accomplished to see that your dream comes to fruition. Allow those that are willing to help you pick up a task that they feel qualified to carry out as well as truly fascinated and eager to complete.</p>
+                    </div>
+                    <li id="content-three" class="sub"> Make your goals S.M.A.R.T</li>
+                    <div id="content-three-a"  class="tips-text">
+                            <p id="smart">Goals are best executed when they are clear-cut and crafted meticulously. Designing your goals based upon the acronym SMART will not only allow you and your team to understand what is expected, but will give you all a sense of accomplishment when the goals are met. Break down you endeavor into distinct and delineated goals.</p>
+                            <div id="smart-explanation">
+                                <p><strong id="specific">Specific</strong></p>
+                                <p id="s">Be definitive in each of your goals to accomplish the main endeavor. When this goal is met how do you envision it as accomplished. What, Why, and How.
+                                    <img class="right-img" src="../../static/images/specific.png" alt="illustration of specific">
+                                </p>
+                                <p><strong id="measurable">Measurable</strong></p>
+                                <p id="m">
+                                    <img class="left-img" src="../../static/images/measure.png" alt="illustration of measurable">This requires tangible evidence, as declared by the <a href="http://www.hr.virginia.edu/uploads/documents/media/Writing_SMART_Goals.pdf">University of Virgina's Human Resources</a>. How will you know that the task is accomplished?</p>
+                                <p><strong id="attainable">Attainable</strong></p>
+                                <p id="a">
+                                    <img class="left-img" src="../../static/images/achievable.png" alt="illustration of attainable">  Certainly, push yourself and others to achieve a goal, but the goal should not be so far removed that it is impossible to accomplish. This may serve as a challenge and a way to motivate yourself and others. Certify that each person has the proper resources and tools to accomplish the goals set before them.</p>
+                                <p><strong id="realistic">Realistic</strong></p>
+                                <p id="r">
+                                    Guarantee that the goals are not based on activities being completed, but results-focused. The goal must be accomplished as it was intended.
+                                    <img class="right-img" src="../../static/images/realistic.jpg" alt="illustration of what is not realistic">
+                                </p>
+                                <p><strong id="time">Time</strong></p>
+                                <p id="t">                                          
+                                    <img class="left-img" src="../../static/images/time.png" alt="illustration of time">
+                                    Lastly, each goal should have a timeframe as to when it is to be completed. This will create a sense of urgency as well as allow you and your team to reconvene and rally in the accomplishment and progress of the endeavor as a whole. Additionally, this will allow you to re-evaluate and view any areas for improvement.
+                                </p>
+                            </div>
+                    </div>
+                    <li id="content-four" class="sub">Have accountability</li>
+                    <div id="content-four-a" class="tips-text">
+                        <p>Having accountability indicated to each person the seriousness of the endeavor as well as helps you stay on track. Embrace it!</p>
+                    </div>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <!-- ADD FORM -->
+    <div id="add-form">
+        <div>
+            <h1 class="title-small">What's your next endeavor...</h1>
+            <div id="center-form">
+                <form action="/create_process" method="post">
+                {%csrf_token%}
+                {% if messages %}
+                    <ul class="messages">
+                        {% for message in messages %}
+                        <li {% if message.tags %} class="{{ message.tags }} error"{% endif %}>
+                            {{ message }}
+                        </li>
+                        {% endfor %}
+                    </ul> 
+                    {% endif %}
+                    <small class="note">Don't use slashes</small>
+                    <p><input type="text" name="title" placeholder="Title"></p>
+                    <p><textarea type="text" name="description" placeholder="Description"></textarea></p>
+                    <p><input type="text" name="location" placeholder="Location"></p>
+                    <p><input class="button button-small" type="submit" value="CREATE" ></p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <a class="left" href="/success"><img id="icon" src="../../static/images/home.png" alt="Home"></a>
+        <a class="right" href="/logout"><img id="icon" src="../../static/images/logout.png" alt="Logout"></a>
+    </footer>
+    <script>
+        $(document).ready(function(){
+            $("#tips-article").click(function(){
+                $(".tips").fadeToggle("slow");
+    //            $(".tips").css("background", "whitesmoke");
+            });
+            $("#content-one").click(function(){
+                $("#content-one-a").fadeToggle("slow")
+            });
+            $("#content-two").click(function(){
+                $("#content-two-a").fadeToggle("slow")
+            });
+            $("#content-three").click(function(){
+                $("#content-three-a").fadeToggle("slow")
+            });
+            $("#content-four").click(function(){
+                $("#content-four-a").fadeToggle("slow")
+            });
+            //smart goals
+            $("#smart").click(function(){
+                $("#smart-explanation").fadeToggle("slow")
+            });
+            $("#specific").click(function(){
+                $("#s").fadeToggle("slow")
+            });
+            $("#measurable").click(function(){
+                $("#m").fadeToggle("slow")
+            });
+            $("#attainable").click(function(){
+                $("#a").fadeToggle("slow")
+            });
+            $("#realistic").click(function(){
+                $("#r").fadeToggle("slow")
+            });
+            $("#time").click(function(){
+                $("#t").fadeToggle("slow")
+            });
+        })
+
+    </script>
+</body>
+</html>

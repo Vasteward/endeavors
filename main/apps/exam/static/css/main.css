@@ -1,0 +1,305 @@
+*{
+    border: 4px dotted blue;
+}
+
+
+body{
+    background-image: url(./../images/background.jpg);
+    height: 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center center;
+    /* overflow: scroll; */
+    margin-bottom: 10%
+
+
+}
+
+
+.login-reg{
+    justify-content: center;
+    align-content: center;
+    background-color: #eeeeee94;
+    width: 50vw;
+    padding: 10px;
+    margin: 0 auto;
+    border-radius: 10% / 50%;
+
+}
+
+#log, #reg{
+    display: none;
+}
+
+
+body:before {
+    content: "";
+    position: fixed;
+    top: -10px;
+    left: 0;
+    width: 100%;
+    height: 10px;
+
+    -webkit-box-shadow: 0px 0px 10px rgba(0,0,0,.8);
+       -moz-box-shadow: 0px 0px 10px rgba(0,0,0,.8);
+            box-shadow: 0px 0px 10px rgba(0,0,0,.8);
+    z-index: 100;
+}
+
+.title{
+    font-family: 'Arizonia', cursive;
+    font-size: 20vw;
+    text-shadow: 5px 3px 12px #1C6EA4;
+    color: #180233;
+    text-align: center;
+    margin: auto auto;
+    -webkit-animation-name: example; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
+    animation-name: shadow;
+    animation-duration: 6s;
+    animation-iteration-count: infinite;
+    overflow: visible;
+
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes shadow {
+    0%   {text-shadow: 5px 3px 12px #e42828;}
+    10%  {text-shadow: 5px 3px 12px #e48c28;}
+    20%  {text-shadow: 5px 3px 12px #f1df0e;}
+    30%  {text-shadow: 5px 3px 12px #359658;}
+    40%  {text-shadow: 5px 3px 12px #00bbe4;}
+    50%  {text-shadow: 5px 3px 12px #09c092;}
+    60%  {text-shadow: 5px 3px 12px #7600e4;}
+    70%  {text-shadow: 5px 3px 12px #EBF4F8;}
+    100%  {text-shadow: 5px 3px 12px #e42828;}
+}
+
+/* Standard syntax */
+@keyframes shadow {
+    0%   {text-shadow: 5px 3px 12px #e42828;}
+    10%  {text-shadow: 5px 3px 12px #e48c28;}
+    20%  {text-shadow: 5px 3px 12px #f1df0e;}
+    30%  {text-shadow: 5px 3px 12px #359658;}
+    40%  {text-shadow: 5px 3px 12px #00bbe4;}
+    50%  {text-shadow: 5px 3px 12px #09c092;}
+    60%  {text-shadow: 5px 3px 12px #7600e4;}
+    70%  {text-shadow: 5px 3px 12px #EBF4F8;}
+    100%  {text-shadow: 5px 3px 12px #e42828;}
+}
+
+#icon{
+    height: 2em;
+    padding: 0 auto;
+    margin: 0 auto; 
+    filter: drop-shadow(0px -2px 0px #f5e116)
+    drop-shadow(1px 2px 0px #f5e116)
+    drop-shadow(-1px 0px 0px #f5e116)
+    drop-shadow(0px 1px 2px #f5e116)
+}
+
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #180233;
+    color: #C78E64;
+    text-align: center;
+    font-family: 'Oswald', sans-serif;
+    box-shadow: 0px 0px 10px rgba(0,0,0,.8);
+    padding: 1vh 0;
+}
+p, small{
+    padding: 0px;
+    margin: 0px;
+}
+
+p > small{
+    font-size: 1em;
+}
+p > input, textarea{
+    font-family: 'Oswald', sans-serif;
+    text-align: center;
+    margin-bottom: .8vh;
+}
+
+h1{
+    font-family: 'Oswald', sans-serif;
+    font-size: 5vw;
+    /* min-width: 10px; */
+    margin: 0 30px;
+}
+.credit{
+    background: #180233;
+    text-shadow: #00bbe4;
+}
+#t-reg, #t-log{
+    text-align: center;
+    color: #FFFFFF;
+    text-shadow: #474747 3px 5px 2px;
+    text-transform: uppercase;
+}
+
+/* media queries */
+@media(min-width: 600px){
+    .title {
+        margin: 0 auto;
+    }
+    p > input{
+        font-size: 2vw;
+    }
+    .button{
+        font-size: 3vw;
+        padding: 1rem;
+    }
+    p > small{
+        font-size: 2vw;
+    }
+}
+
+.button{
+    background-color: #180233;
+    color: #C78E64;
+    font-family: 'Oswald', sans-serif;
+    font-size: 4vw;
+    padding: 16px;    
+    border-radius: 50px 20px;
+    -webkit-box-shadow: 0 10px 6px -6px #777;
+       -moz-box-shadow: 0 10px 6px -6px #777;
+            box-shadow: 0 10px 6px -6px #777;
+}
+
+
+#center, .show{
+    margin-bottom: 0vh !important;
+}
+#center{
+    margin: 0 auto;
+    text-align: center;
+    padding: 0 auto;
+}
+
+#responsive-log{
+    margin: 0px;
+}
+
+/* ICONS */
+.note{
+    color: #2898f3;
+    text-shadow: 2px 2px 4px white;
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+    font-size: 2vh;
+}
+
+.home{
+    color: #C78E64;
+    filter: drop-shadow(0px 1px 7px #C78E64);
+
+}
+ul{
+    list-style: none;
+}
+
+/* 
+  ##Device = Desktops
+  ##Screen = 1281px to higher resolution desktops
+*/
+
+@media (min-width: 1281px) {
+  
+    
+  }
+  
+  /* 
+    ##Device = Laptops, Desktops
+    ##Screen = B/w 1025px to 1280px
+  */
+  
+  @media (min-width: 1025px) and (max-width: 1280px) {
+    
+    
+  }
+  
+  /* 
+    ##Device = Tablets, Ipads (portrait)
+    ##Screen = B/w 768px to 1024px
+  */
+  
+  @media (min-width: 768px) and (max-width: 1024px) {
+    #center{
+        margin-top: 0vh;
+    }
+    .container{
+        margin-top: 26%;
+    }
+
+
+    
+}
+  
+  /* 
+    ##Device = Tablets, Ipads (landscape)
+    ##Screen = B/w 768px to 1024px
+  */
+  
+  @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+    #center{
+        margin-top: 0vh;
+    }
+    
+  }
+  
+  /* 
+    ##Device = Low Resolution Tablets, Mobiles (Landscape)
+    ##Screen = B/w 481px to 767px
+  */
+  
+  @media (min-width: 481px) and (max-width: 767px) {
+    
+    
+  }
+  
+  /* 
+    ##Device = Most of the Smartphones Mobiles (Portrait)
+    ##Screen = B/w 320px to 479px
+  */
+  
+  @media (min-width: 320px) and (max-width: 480px) {
+    .title-small {
+        font-size: 13vw !important;
+    }
+    #add {
+        height: 100vh;
+        overflow: scroll;
+        margin-top: 17vh;
+        margin-bottom: 0vh;
+        /* margin-bottom: 10%; */
+    }
+    #center {
+        margin: 0 auto;
+        text-align: center;
+        padding: 0 auto;
+        /* margin-top: 21vh; */
+        margin-bottom: 2vh;
+    }
+    #main{
+        margin: 0;
+    }
+    /* .container{
+        padding: 5vw;
+        margin: 0 auto;
+        border-radius: 10% / 50%;
+        display: block;
+        width: 80vw;
+    } */
+    .container{
+        display: block !important;
+        width: 80vw !important;
+    }
+    #center-form {
+        width: 75vw !important;
+    }
+}

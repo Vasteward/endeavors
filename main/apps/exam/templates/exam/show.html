@@ -1,0 +1,77 @@
+{% load static from staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Endeavor: {{particular_job.title}}</title>
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css"> -->
+
+     <!-- linking a css style sheet -->
+     <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+     <link rel="stylesheet" type="text/css" href="{% static 'css/dash.css' %}">
+ 
+    <!-- javascript -->
+    <script type="text/javascript" src="{% static 'js/app.js' %}"></script>
+
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Arizonia" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+
+    <!-- jquery -->
+    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+    <div class="show-container">
+        <h3 class="title-small" style="text-align: center;">{{particular_job.title}}</h3>
+            <div id="center" class="show center-show">
+                <h1 class="description">{{particular_job.description}}</h1>
+                <p class="note">description</p>
+                <h1 class="description">{{particular_job.location}}</h1>    
+                <p class="note">location</p>
+                <h1 class="description">{{particular_job.creator.first_name}}{{particular_job.creator.last_name}}</h1>
+                <p class="note">individual responsible</p>
+                <h1 class="description">{{particular_job.created_at}}</h1>
+                <p class="note">date created</p>
+            </div>
+    </div>
+    <footer>
+        <a class="left" href="/success"><img id="icon" src="../../static/images/home.png" alt="Home"></a>
+        <a href="/add"><img id="icon" src="../../static/images/add.png" alt="Add an Endeavor"></a></li>
+        <a class="right" href="/logout"><img id="icon" src="../../static/images/logout.png" alt="Logout"></a>
+    </footer>
+</body>
+</html>
+
+
+html_doc = " "
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>My Webpage</title>
+</head>
+<body>
+    <div id="section-1">
+        <h3 data-hello="hi">Hello</h3>
+        <img src="https://source.unsplash.com/200x200/?nature,water
+        " alt="">
+        <p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam explicabo minima suscipit natus illum illo quidem placeat quis nihil, omnis labore consectetur nisi esse voluptatum sapiente nostrum ab accusantium neque dolore qui, repellendus consequuntur? Vero, porro. Alias adipisci suscipit reiciendis.
+        </p>
+    </div>
+    <div id="section-2">
+        <div class="items">
+            <li class="item"><a href=""></a></li>
+            <li class="item"><a href=""></a></li>
+            <li class="item"><a href=""></a></li>
+            <li class="item"><a href=""></a></li>
+        </div>
+    </div>
+</body>
+</html>

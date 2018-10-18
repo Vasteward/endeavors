@@ -1,0 +1,171 @@
+{% load static from staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DASHBOARD</title>
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css"> -->
+    
+    <!-- linking a css style sheet -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/dash.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/carousel.css' %}">
+
+
+    <!-- javascript -->
+    <script type="text/javascript" src="{% static 'js/app.js' %}"></script>
+
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Arizonia" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+
+    <!-- jquery -->
+    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body id="dash">
+
+    <div id="endeavors">
+        <header>
+            <div class="date-time">
+                    <h4>{{date}}</h4>
+                    <h4>{{time}}</h4>
+            </div>
+            <h1 class="inside-title" id="quote">{{user.first_name}}
+                    <h1 id="output"></h1>
+            </h1>
+            
+
+        </header>
+
+        <section id="user" class="slideshow" >
+            <div class="content-container">
+                <h1 class="subtitle" id="personal-subtitle" >
+                    <!-- <img id="personal" src="../../static/images/single.png" alt="Personal Endeavors">  -->
+                    My Endeavors</h1>
+                <div class="content-carousel">
+                    {% for u in users_jobs%}
+                        <figure id="card" class="shadow" draggable="true">
+                            {% if u.creator.id == request.session.user_id %}
+                            
+                            <a class="subtitle" href="/handy/{{u.id}}/show"><h3 class="endeavor">{{u.title}}</h3>
+                                <div>
+                                    <a href="/handy/{{u.id}}/edit"><img id="icon" class=" action" src="../../static/images/edit.png" alt="Edit task"> </a>
+                                    <a href="/handy/{{u.id}}/cancel"><img id="icon" class="action" src="../../static/images/complete.png" alt="Terminate task as complete"> </a>
+                                </div>
+                            </a>    
+                            {% endif %}
+                        </figure>
+                    {% endfor %}
+                </div>
+            </div>  
+        </section>
+        <section id="users" class="content">
+            <h1 class="subtitle">
+                <!-- <img id="other" src="../../static/images/multiple.png" alt="All Endeavors"> -->
+                All Endeavors</h1>
+            <div class="dash-container">
+                <table id="list" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <th>Job</th>
+                            <th>User</th>
+                            <!-- <th>Location</th> -->
+                            <th>Action</th>
+                        </tr>   
+
+                        {% for j in job%}
+                        <tr>
+                            <td>{{j.title}}</td>
+                            <td>{{j.creator.first_name}}</td>
+                            <!-- <td>{{j.location}}</td> -->
+                            <td>
+                                <a href="/handy/{{j.id}}/show"><img class="action" src="../../static/images/view-2.png" alt="View task"></a>
+                            {% if j.creator.id == request.session.user_id %}
+                            <!-- <a href="/add">ADD</a> -->
+                            {%endif%}
+                            {% if j.creator.id == request.session.user_id %}
+                                <a href="/handy/{{j.id}}/edit"><img class="action" src="../../static/images/edit.png" alt="Edit task"> </a>
+                                <a href="/handy/{{j.id}}/cancel"><img class="action" src="../../static/images/complete.png" alt="Terminate task as complete"></a>
+                            </td>
+                            {% endif %}
+                        </tr>
+                        {% endfor %}
+                </table>
+            </div>
+        </section>
+    </div>
+    <div id="center-img" class="center">
+            <figure><img id="personal"src="../../static/images/single.png" alt="Personal Endeavors"></figure>
+            <figure><img id="others" src="../../static/images/poeple.png" alt="Personal Endeavors"></figure>
+    </div>
+    <footer>
+        <a class="left" href="/add"><img id="icon" src="../../static/images/add.png" alt="Add an Endeavor"></a></li>
+        <img id="small-personal" src="../../static/images/single.png" alt="Personal Endeavors">
+        <img id="small-others" src="../../static/images/poeple.png" alt="Personal Endeavors">
+        <a class="right" href="/logout"><img id="icon" src="../../static/images/logout.png" alt="Logout"></a>
+    </footer>
+    <script>
+        function showPersonalEndeavors(){
+            document.getElementById("personal").innerHTML = "My Endeavors";
+        }
+                function showPersonalEndeavors(){
+            document.getElementById("personal").innerHTML = "My Endeavors";
+        }
+        $(document).ready(function(){
+            $("#personal").click(function(){
+                $("#user").slideToggle(2000);
+                $("#center-img").css("display", "none");
+                $("#small-others").css("display", "unset");
+
+            });
+            $("#others").click(function(){
+                $("#users").show(2000);
+                $("#center-img").css("display", "none");
+                $("#small-personal").css("display", "unset");
+
+            });
+            $("#small-personal").click(function(){
+                $("#user").slideToggle(2000);
+                $("#users").css("display", "none");
+                $("#small-personal").css("display", "none");
+                $("#small-others").css("display", "unset");
+
+            });
+            $("#small-others").click(function(){
+                $("#users").show(2000);
+                $("#user").css("display", "none");
+                $("#small-others").css("display", "none");
+                $("#small-personal").css("display", "unset");
+            });
+    
+        })
+
+
+
+        document.getElementById('quote').addEventListener('click', getQuote);
+        function getQuote(){
+            fetch('https://quotes.rest/qod?category=inspire')
+            .then((res) => res.json())
+            .then((data) => {
+
+                data = data.contents.quotes[0].quote;
+                //$("#quote").click(function(){
+                    //$(this).replaceWith(data);
+                  //  $("#quote").append('<p class="credit">Quote of the day by "They Said So API"</p>');
+                //})
+                document.getElementById('output').innerHTML = " ' " + data + " ' " ;
+
+            })
+            .catch((err)=> {
+                alert(err)
+            })
+
+        }
+
+
+    </script>
+</body>
+</html>

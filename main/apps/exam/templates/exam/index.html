@@ -1,0 +1,87 @@
+{% load static from staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login/Registration</title>
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css"> -->
+    
+    <!-- linking a css style sheet -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Arizonia" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+
+    <!-- jquery -->
+    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- javascript -->
+    <script type="text/javascript" src="{% static 'js/app.js' %}"></script>
+
+
+</head>
+<body>
+    
+    <main id="center">
+        <h1 class="title" >Endeavors</h1>
+        <div >
+            <h1 id="t-reg">Register</h1>
+            <div id="reg" class="login-reg">
+                <form action="/register" method="post">
+                {% csrf_token %}
+                {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                    <li {% if message.tags %} class="{{ message.tags }} red-text"{% endif %}>
+                        {{ message }}
+                    </li>
+                    {% endfor %}
+                </ul> 
+                {% endif %}
+                    <p> <input type="text" name="first" placeholder="First Name"></p>
+                    <p> <input type="text" name="last" placeholder="Last Name"></p>
+                    <p> <input type="text" name="email" placeholder="Email Address"></p>
+                    <p> <input type="password" name="pw" placeholder="Password"></p>
+                    <p> <input type="password" name="confirm_pw" placeholder="Confirm Password"></p>
+                    <input class="button" type="submit" value="REGISTER">
+                </form>
+            </div>
+        </div>
+        <div class="no-hide">
+        <div id="responsive-log">
+            <h1 id="t-log" >Login</h1>
+            <div id="log" class="login-reg">
+                <form action="/login" method="post">
+                {% csrf_token %}
+                    <p> <input type="text" name="email"></p>
+                    <p> <input type="password" name="pw"></p>
+                    <input class="button" type="submit" value="LOGIN">
+                </form>
+            </div>
+        </div>
+    </div>
+    </main>
+    <footer>
+        <p><small>powered by <img id="icon" src="../../static/images/python.png" alt="python "></small></p>
+        <p><small>Photo by Art by Lønfeldt on Unsplash</small></p>
+    </footer>
+    <script>
+        $(document).ready(function(){
+            $("#t-reg").click(function(){
+                $("#reg").slideToggle(1000);
+                //$(".title").fadeOut("fast");
+//                $("#t-reg").click(function(){
+//                  $("#t-log").fadeIn("slow");
+            });
+            $("#t-log").click(function(){
+                $("#log").slideToggle("slow");
+                //$(".title").fadeOut("fast");
+            });
+
+        })
+    </script>
+</body>
+</html>

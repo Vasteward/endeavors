@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Google API</title>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYPnO_LUKnQZmQevTmRMo32Fr0_i3G9Ww&libraries=places"></script>
+    <script>
+
+        var map;
+        // the initialize function creates the map
+        function initialize(){
+            var center = new google.maps.LatLng(39.7392, -104.9903);
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: center,
+                //the lower the number the further the map will be zoomed out
+                zoom: 13
+            });
+        }
+        // occurs when page loads
+        google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+</head>
+<style>
+    #map{
+        background: black;
+        height: 100vh;
+        margin: 0px;
+        padding: 0px;
+    }
+</style>
+<body>
+    <h1>Can you see this?</h1>
+    <p>it would really suck if you couldn't</p>
+    <div id="map">
+
+    </div>
+
+</body>
+</html>

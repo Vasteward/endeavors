@@ -1,0 +1,58 @@
+{% load static from staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+
+    <title>EDIT: {{job.title}}</title>
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css"> -->
+
+     <!-- linking a css style sheet -->
+     <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+     <link rel="stylesheet" type="text/css" href="{% static 'css/dash.css' %}">
+ 
+    <!-- javascript -->
+    <script type="text/javascript" src="{% static 'js/app.js' %}"></script>
+
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Arizonia" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+
+    <!-- jquery -->
+    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title-small">Edit Endeavor</h1>
+        <div id="center-form">
+            <form action="/handy/{{job.id}}/update_process" method="post">
+            {%csrf_token%}
+            {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                    <li {% if message.tags %} class="{{ message.tags }} red-text"{% endif %}>
+                        {{ message }}
+                    </li>
+                    {% endfor %}
+                </ul> 
+                {% endif %}
+                <small class="note">Don't use slashes</small>
+                <p><input type="text" name="title" value="{{job.title}}" placeholder="Title"></p> 
+                <p><textarea type="text" name="description" value="{{job.description}}" placeholder="Description">{{job.description}}</textarea></p>
+                <p><input type="text" name="location" value="{{job.location}}" placeholder="Location"></p>
+                <p><input class="button button-small" type="submit" value="UPDATE"></p>
+            </form>
+        </div>
+    </div>
+    <footer>
+        <a class="left" href="/success"><img id="icon" src="../../static/images/home.png" alt="Home"></a>
+        <a href="/add"><img id="icon" src="../../static/images/add.png" alt="Add an Endeavor"></a></li>
+        <a class="right" href="/logout"><img id="icon" src="../../static/images/logout.png" alt="Logout"></a>
+    </footer>
+</body>
+</html>
