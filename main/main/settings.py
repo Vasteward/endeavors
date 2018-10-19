@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
 import os
+import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -25,7 +26,10 @@ SECRET_KEY = 'k5-0+zy31pkv8&+k&7-7y&-lxuxydiipx*z02#)wez*y!)c11d'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'endeavors.herokuapp.com',
+
+]
 
 
 # Application definition
@@ -48,6 +52,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # Simplified static file serving.
+    # https://warehouse.python.org/project/whitenoise/
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'main.urls'
@@ -118,7 +125,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
-STATIC_URL = '/static/'
+# STATIC_URL = '/static/'
 
 
 STATICFILES_FINDERS = [
@@ -126,20 +133,31 @@ STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 ]
 
+# ATTENTION- If the below pasted code does not work, you may need to reinstate this code(ln 143-146)
 # STATICFILES_DIRS = [
-#     "./../apps/exam/static/",
+#     #BASE_DIR = base directory
+#     os.path.join(BASE_DIR, '../../../python_django/main/apps/exam/static'),
 # ]
-#STATICFILES_DIRS is a property
-# STATICFILES_DIRS = [
-#     # os path version, rather than hard coding it
-#     os.path.join(BASE_DIR, "static"),
-# ]
-
-
-STATICFILES_DIRS = [
-    #BASE_DIR = base directory
-    os.path.join(BASE_DIR, '../../../python_django/main/apps/exam/static'),
-]
 #emulating our files being on a different server
 
-# STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_cdn")
+STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_cdn")
+
+django_heroku.settings(locals())
+
+
+# from Heroku 
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/1.9/howto/static-files/
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_URL = '/static/'
+
+# Extra places for collectstatic to find static files.
+STATICFILES_DIRS = (
+    #     # os path version, rather than hard coding it
+    os.path.join(BASE_DIR, 'static'),
+)
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
