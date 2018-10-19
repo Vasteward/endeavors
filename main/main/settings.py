@@ -121,6 +121,8 @@ USE_L10N = True
 
 USE_TZ = True
 
+WHITENOISE_USE_FINDERS = True
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
@@ -134,15 +136,15 @@ STATICFILES_FINDERS = [
 ]
 
 # ATTENTION- If the below pasted code does not work, you may need to reinstate this code(ln 143-146)
-# STATICFILES_DIRS = [
-#     #BASE_DIR = base directory
-#     os.path.join(BASE_DIR, '../../../python_django/main/apps/exam/static'),
-# ]
+STATICFILES_DIRS = [
+    #BASE_DIR = base directory
+    os.path.join(BASE_DIR, '../../../python_django/main/apps/exam/static'),
+]
 #emulating our files being on a different server
 
 STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_cdn")
 
-django_heroku.settings(locals())
+# django_heroku.settings(locals())
 
 
 # from Heroku 
@@ -155,9 +157,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 STATIC_URL = '/static/'
 
 # Extra places for collectstatic to find static files.
-STATICFILES_DIRS = (
-    #     # os path version, rather than hard coding it
-    os.path.join(BASE_DIR, 'static'),
-)
+# STATICFILES_DIRS = (
+#     #     # os path version, rather than hard coding it
+#     os.path.join(BASE_DIR, 'static'),
+# )
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
